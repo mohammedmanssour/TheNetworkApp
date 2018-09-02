@@ -1,0 +1,8 @@
+<ux:Resources>
+	<!-- static globals is that they cannot be changed while the app is running -->
+	<!-- and this is the reason why we're using dynamic resources -->
+	<float4 ux:Global="TheNetwork.BrandColor" ux:Value="#181334" />
+	<float4 ux:Global="TheNetwork.SecondaryColor" ux:Value="#f31541" />
+	<float4 ux:Global="TheNetwork.LightGrey" ux:Value="#e5e5e5" />
+	<float4 ux:Global="TheNetwork.Background" ux:Value="#eaeaea" />
+</ux:Resources>

@@ -1,7 +1,7 @@
 {
-  "name": "fuseboilerplate",
+  "name": "thenetwork",
   "version": "1.0.0",
-  "description": "A base naked template for Fuse apps",
+  "description": "a simple social network app built with Fuse",
   "main": "main.js",
   "scripts": {
     "test": "ava test"

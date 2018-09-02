@@ -1,3 +1,3 @@
 module.exports = {
-	baseUri: '{baseUri}'
+	baseUri: 'https://thenetwork.fusecourse.com/api'
 }
