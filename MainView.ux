@@ -5,10 +5,12 @@
 	<Font File="Assets/Fonts/icons.ttf" ux:Global="Icons" />
 	<Font File="Assets/Fonts/Regular.ttf" ux:Global="Regular" />
 	<Font File="Assets/Fonts/Bold.ttf" ux:Global="Bold" />
+
 	<Rectangle Width="100%" Height="100%" />
 
 	<ClientPanel>
-		<Navigator>
+		<Navigator DefaultPath="splash">
+			<SplashPage ux:Template="splash" router="router" />
 		</Navigator>
 	</ClientPanel>
 

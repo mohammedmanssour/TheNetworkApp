@@ -1,0 +1,20 @@
+<StackPanel ux:Class="TheNetwork.Slide" ItemSpacing="10">
+
+    <FileSource ux:Property="Image" />
+    <string ux:Property="Title" />
+    <string ux:Property="Description" />
+
+    <Image StretchMode="UniformToFill" File="{Property Image}" />
+    <TheNetwork.BoldText
+        Alignment="Center"
+        FontSize="22"
+        Color="#000"
+        Margin="0,20,0,0"
+        Value="{Property Title}"  />
+    <TheNetwork.RegularText
+        Alignment="Center"
+        TextWrapping="Wrap"
+        Value="{Property Description}" />
+
+    <Rectangle Layer="Background" Color="#fff" CornerRadius="4" />
+</StackPanel>

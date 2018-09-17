@@ -1,0 +1,67 @@
+<Page ux:Class="SplashPage" >
+
+    <Router ux:Dependency="router" />
+
+    <JavaScript File="SplashPage.js" />
+
+    <Image Layer="Background" StretchMode="UniformToFill" File="../Assets/Images/bg.jpg" />
+
+    <Grid Rows="1*,5*,1*,1*">
+        <TheNetwork.RegularText Color="#fff" Alignment="Center" FontSize="20" Value="Walkthrough" />
+        <PageControl Margin="30,0,30,0" ux:Name="Slider">
+            <TheNetwork.Slide
+                Image="../Assets/Images/slide-image-1.jpg"
+                Title="like each others posts"
+                Description="This is a description for our first slide"
+                />
+
+            <TheNetwork.Slide
+                Image="../Assets/Images/slide-image.jpg"
+                Title="Slide Title 2"
+                Description="This is a description for our second slide"
+                />
+
+        </PageControl>
+
+        <PageIndicator Navigation="Slider" ContentAlignment="Center">
+            <Rectangle
+                ux:Template="Dot"
+                ux:Name="Dot"
+                Width="20"
+                Height="5"
+                Color="#eee"
+                CornerRadius="20"
+                Opacity="0.5"
+                Margin="5"
+                >
+
+                <ActivatingAnimation>
+                    <Change Dot.Width="50" />
+                    <Change Dot.Color="{Resource TheNetwork.SecondaryColor}" />
+                </ActivatingAnimation>
+
+            </Rectangle>
+        </PageIndicator>
+
+        <WhileString Value="{state}" Equals="success">
+            <Grid Columns="1*,1*" CellSpacing="20" Margin="20">
+                <TheNetwork.Button
+                    Text="Register"
+                    BackgroundColor="{Resource TheNetwork.SecondaryColor}"
+                    StrokeColor="{Resource TheNetwork.SecondaryColor}"
+                    />
+
+                <TheNetwork.Button
+                    Text="Login"
+                    BackgroundColor="Transparent"
+                    StrokeColor="{Resource TheNetwork.LightGrey}"
+                    />
+            </Grid>
+        </WhileString>
+
+        <WhileString Value="{state}" Equals="success" Invert="true">
+            <TheNetwork.BoldText Color="#fff" Alignment="Center" Value="{message}" />
+        </WhileString>
+
+    </Grid>
+</Page>
