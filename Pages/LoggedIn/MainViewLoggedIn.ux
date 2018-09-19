@@ -1,0 +1,7 @@
+<Page ux:Class="MainViewLoggedIn">
+    <Router ux:Dependency="router" />
+
+    <Navigator>
+        <FeedPage ux:Template="feed" router="router" />
+    </Navigator>
+</Page>

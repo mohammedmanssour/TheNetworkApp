@@ -6,11 +6,14 @@
 	<Font File="Assets/Fonts/Regular.ttf" ux:Global="Regular" />
 	<Font File="Assets/Fonts/Bold.ttf" ux:Global="Bold" />
 
-	<Rectangle Width="100%" Height="100%" />
+	<FlashMessage Alignment="Bottom" />
 
 	<ClientPanel>
 		<Navigator DefaultPath="splash">
 			<SplashPage ux:Template="splash" router="router" />
+			<RegisterPage ux:Template="register" router="router" />
+			<LoginPage ux:Template="login" router="router" />
+			<MainViewLoggedIn ux:Template="loggedIn" router="router" />
 		</Navigator>
 	</ClientPanel>
 

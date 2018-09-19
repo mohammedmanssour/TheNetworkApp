@@ -1,0 +1,5 @@
+<Page ux:Class="FeedPage">
+    <Router ux:Dependency="router" />
+
+    <Text Alignment="Center" Value="Hello from inner pages" />
+</Page>
