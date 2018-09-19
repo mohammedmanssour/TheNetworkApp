@@ -7,6 +7,11 @@ function User(){
 	this.id = '';
 	this.name = '';
 	this.email = ''
+	this.profile_picture = '';
+	this.cover = '';
+	this.description = '';
+	this.followers_count = '';
+	this.following_count = '';
 
 	this.is_logged_in = Observable(false);
 }
@@ -29,7 +34,12 @@ User.singleton = function(){
 User.prototype.update = function(newUserInfo) {
 	this.id = newUserInfo.id;
 	this.name = newUserInfo.name;
-	this.email = newUserInfo.email
+	this.email = newUserInfo.email;
+	this.profile_picture = newUserInfo.profile_picture;
+	this.cover = newUserInfo.cover;
+	this.description = newUserInfo.description;
+	this.followers_count = newUserInfo.followers_count;
+	this.following_count = newUserInfo.following_count;
 
 	return this;
 };
@@ -86,4 +96,3 @@ User.prototype.readFromStorage = function(){
 }
 
 module.exports = User;
-
