@@ -1,0 +1,23 @@
+<Page ux:Class="LoginPage" >
+    <Router ux:Dependency="router" />
+
+    <JavaScript File="LoginPage.js" />
+
+    <Image Layer="Background" StretchMode="UniformToFill" File="../Assets/Images/bg.jpg" />
+
+
+    <ScrollView Padding="30" Margin="0,20,0,0">
+        <StackPanel>
+            <TheNetwork.Logo Width="130" Height="130" Margin="0,0,0,80" />
+
+            <WhileEmpty Items="{errors}" Invert="true">
+                <TheNetwork.ErrorsAlert Errors="{errors}" Margin="0,0,0,30" />
+            </WhileEmpty>
+
+            <TheNetwork.TextInput PlaceholderText="Email" Icon="&#xe91e;" Value="{data.email}" />
+            <TheNetwork.TextInput PlaceholderText="Password" Icon="&#xe91d;" IsPassword="true" Value="{data.password}" />
+
+            <TheNetwork.LoaderButton Text="Login" IsLoading="{isLoading}" Clicked="{send_login_request}" />
+        </StackPanel>
+    </ScrollView>
+</Page>
