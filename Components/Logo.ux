@@ -1,0 +1,12 @@
+<Panel ux:Class="TheNetwork.Logo">
+
+    <Image File="../Assets/Images/logo.png" Width="60%" />
+
+    <Rectangle Layer="Background" Padding="10" CornerRadius="10">
+        <Rotation Degrees="45" />
+        <Stroke Width="1" Color="#ffffff40" />
+
+        <Rectangle Color="#fff" CornerRadius="10" />
+    </Rectangle>
+
+</Panel>
