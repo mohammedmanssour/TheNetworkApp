@@ -2,6 +2,7 @@ const Observable = require('FuseJS/Observable');
 const Api = require('Modules/Api');
 const FlashMessage = require('Modules/FlashMessage');
 const User = require('Modules/User');
+const Auth = require('Modules/Auth');
 
 const isLoading = Observable(false);
 
@@ -35,6 +36,10 @@ const send_login_request = function(){
             if(content.meta.code === 1){
                 User.singleton()
                     .update(content.data)
+                    .saveToStorage();
+
+                Auth.singleton()
+                    .setToken(content.meta.token)
                     .saveToStorage();
 
                 FlashMessage.singleton().success('You\'re now logged in').show();
