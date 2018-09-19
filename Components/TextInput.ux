@@ -1,0 +1,23 @@
+<TextInput ux:Class="TheNetwork.TextInput"
+    Height="40"
+    PlaceholderColor="#fff"
+    TextColor="#fff"
+    Padding="50,0,0,0"
+    Margin="0,0,0,30"
+    >
+
+    <string ux:Property="Icon" />
+
+    <Icon Value="{Property Icon}" Color="#fff" TextAlignment="Center" Alignment="CenterLeft" Width="50">
+        <Translation RelativeTo="Size" X="-1" />
+    </Icon>
+
+    <Rectangle Alignment="Bottom" Height="1" Layer="Background" Width="100%">
+        <LinearGradient StartPoint="0" EndPoint="1">
+            <GradientStop Offset="0" Color="#ffffff10" />
+            <GradientStop Offset="0.5" Color="#ffffff50" />
+            <GradientStop Offset="1" Color="#ffffff10" />
+        </LinearGradient>
+    </Rectangle>
+
+</TextInput>
