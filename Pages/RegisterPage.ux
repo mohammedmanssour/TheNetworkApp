@@ -1,0 +1,26 @@
+<Page ux:Class="RegisterPage" >
+    <Router ux:Dependency="router" />
+
+    <JavaScript File="RegisterPage.js" />
+
+    <Image Layer="Background" StretchMode="UniformToFill" File="../Assets/Images/bg.jpg" />
+
+
+    <ScrollView Padding="30" Margin="0,20,0,0">
+        <StackPanel>
+            <TheNetwork.Logo Width="130" Height="130" Margin="0,0,0,80" />
+
+            <WhileEmpty Items="{errors}" Invert="true">
+                <TheNetwork.ErrorsAlert Errors="{errors}" Margin="0,0,0,30" />
+            </WhileEmpty>
+
+            <TheNetwork.TextInput PlaceholderText="Name" Icon="&#xe909;" Value="{data.name}" />
+            <TheNetwork.TextInput PlaceholderText="Email" Icon="&#xe91e;" Value="{data.email}" />
+            <TheNetwork.TextInput PlaceholderText="Password" Icon="&#xe91d;" IsPassword="true" Value="{data.password}" />
+            <TheNetwork.TextInput PlaceholderText="Password Confirmation" Icon="&#xe91d;" IsPassword="true" Value="{data.password_confirmation}" />
+            <TheNetwork.TextInput PlaceholderText="Description" Icon="&#xe90f;" Value="{data.description}" />
+
+            <TheNetwork.LoaderButton Text="Register" IsLoading="{isLoading}" Clicked="{send_register_request}" />
+        </StackPanel>
+    </ScrollView>
+</Page>
