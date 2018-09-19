@@ -1,0 +1,36 @@
+<StackPanel ux:Class="TheNetwork.ErrorsAlert" ItemSpacing="10" Padding="0,0,0,10">
+
+    <object ux:Property="Errors" />
+
+    <JavaScript>
+        const errors = this.Errors.inner();
+
+        module.exports = {
+            errors
+        }
+    </JavaScript>
+
+    <Panel Height="40" Padding="10">
+        <TheNetwork.RegularText Color="#fff" Alignment="CenterLeft" Value="Please Fix The following errors" />
+        <Rectangle Layer="Background" Color="{Resource TheNetwork.SecondaryColor}" CornerRadius="10,10,0,0" />
+    </Panel>
+
+    <DockPanel ux:Class="ErrorItem">
+        <string ux:Property="Error" />
+        <Panel Dock="Left" Width="30">
+            <Icon Value="&#xe916;" Alignment="TopCenter" Color="#fff" FontSize="20" />
+        </Panel>
+        <Panel Dock="Fill">
+            <TheNetwork.RegularText Color="#fff" TextWrapping="Wrap" Value="{Property Error}" />
+        </Panel>
+    </DockPanel>
+
+    <Each Items="{errors}">
+        <ErrorItem Error="{=data()}" />
+    </Each>
+
+    <Rectangle Layer="Background" CornerRadius="10">
+        <Stroke Color="#ffffff50" Width="1" />
+    </Rectangle>
+
+</StackPanel>
