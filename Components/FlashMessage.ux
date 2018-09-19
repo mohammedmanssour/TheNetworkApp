@@ -1,0 +1,33 @@
+<Panel ux:Class="FlashMessage" ux:Name="FlashMessage" MinHeight="60" Padding="20">
+
+    <JavaScript>
+        const FlashMessage = require('Modules/FlashMessage');
+
+        module.exports = {
+            flash: FlashMessage.singleton()
+        }
+    </JavaScript>
+
+    <Text
+        ux:Name="FlashText"
+        Value="{flash.message}"
+        Color="#000"
+        TextWrapping="Wrap"
+        />
+
+    <Rectangle Layer="Background" Color="#eee" />
+
+    <Translation RelativeTo="Size" X="-1" />
+
+    <WhileString Value="{flash.type}" Equals="success">
+        <Change FlashText.Color="#008000" />
+    </WhileString>
+
+    <WhileString Value="{flash.type}" Equals="danger">
+        <Change FlashText.Color="{Resource TheNetwork.SecondaryColor}" />
+    </WhileString>
+
+    <WhileString Value="{flash.state}" Equals="shown">
+        <Move Target="FlashMessage" RelativeTo="Size" X="1" Duration="0.5" />
+    </WhileString>
+</Panel>
