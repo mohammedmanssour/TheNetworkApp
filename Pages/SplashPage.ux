@@ -49,6 +49,7 @@
                     Text="Register"
                     BackgroundColor="{Resource TheNetwork.SecondaryColor}"
                     StrokeColor="{Resource TheNetwork.SecondaryColor}"
+                    Clicked="{gotoRegister}"
                     />
 
                 <TheNetwork.Button
