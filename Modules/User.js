@@ -69,7 +69,12 @@ User.prototype.saveToStorage = function(){
 	let content = {
 		id: this.id,
 		name: this.name,
-		email: this.email
+		email: this.email,
+		profile_picture: this.profile_picture,
+		cover: this.cover,
+		description: this.description,
+		followers_count: this.followers_count,
+		following_count: this.following_count,
 	};
 
 	Storage.write('userinfo.txt',JSON.stringify(content));
@@ -82,7 +87,7 @@ User.prototype.saveToStorage = function(){
 User.prototype.readFromStorage = function(){
 	return Storage.read('userinfo.txt')
 		.then(content => {
-			if(!content.length){
+			if(!content.length || !content.id){
 				this.update({});
 				this.setLoggedOut();
 				return Promise.resolve('noinfo');
