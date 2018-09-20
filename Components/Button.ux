@@ -1,4 +1,4 @@
-<Panel ux:Class="TheNetwork.Button">
+<Panel ux:Class="TheNetwork.Button" HitTestMode="LocalBoundsAndChildren">
 
     <string ux:Property="Text" />
     <float4 ux:Property="BackgroundColor" />
