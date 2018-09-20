@@ -1,5 +1,6 @@
 const Config = require('../Config');
 const Logger = require('./Logger');
+const Auth = require('./Auth');
 const Uploader = require('Community/Uploader');
 
 function Http(){
@@ -180,6 +181,12 @@ Http.prototype.upload = function(url, file) {
 			return Promise.resolve(JSON.parse(response));
 		});
 };
+
+Http.prototype.authorized = function(){
+	this.reqHeaders['Authorization'] = Auth.singleton().token.value
+
+	return this;
+}
 
 /**
  * create new Http instance
