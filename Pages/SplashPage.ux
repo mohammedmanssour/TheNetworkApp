@@ -56,6 +56,7 @@
                     Text="Login"
                     BackgroundColor="Transparent"
                     StrokeColor="{Resource TheNetwork.LightGrey}"
+                    Clicked="{gotoLogin}"
                     />
             </Grid>
         </WhileString>

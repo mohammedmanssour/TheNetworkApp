@@ -39,8 +39,13 @@ function gotoRegister(){
     router.push('register');
 }
 
+function gotoLogin(){
+    router.push('login');
+}
+
 module.exports = {
     state,
     message,
-    gotoRegister
+    gotoRegister,
+    gotoLogin
 }
