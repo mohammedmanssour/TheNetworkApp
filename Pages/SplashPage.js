@@ -1,6 +1,7 @@
 const Api = require('Modules/Api');
 const Observable = require('FuseJS/Observable');
 const User = require('Modules/User');
+const Auth = require('Modules/Auth');
 
 const state = Observable('loading');
 const message = Observable('Loading...');
@@ -10,8 +11,7 @@ Api.init()
     .json()
     .then(({content, status}) => {
         if(content.meta.code === 1){
-            return User.singleton()
-                .readFromStorage();
+            return checkForUserInfo();
         }
 
         state.value = 'maintenance';
@@ -41,6 +41,28 @@ function gotoRegister(){
 
 function gotoLogin(){
     router.push('login');
+}
+
+function checkForUserInfo(){
+    let userInfo = undefined;
+    return User.singleton()
+            .readFromStorage()
+            .then(content => {
+                if(content === 'noinfo'){
+                    return Promise.resolve('noinfo');
+                }
+
+                userInfo = content;
+                return Auth.singleton()
+                    .readFromStorage()
+            })
+            .then(content => {
+                if(content === undefined || content === 'noinfo'){
+                    return Promise.resolve('noinfo');
+                }
+
+                return Promise.resolve(userInfo);
+            })
 }
 
 module.exports = {
