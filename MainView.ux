@@ -1,4 +1,8 @@
 <App>
+
+	<iOS.StatusBarConfig Style="Dark" Animation="Slide" IsVisible="false" />
+	<Android.StatusBarConfig Color="#181334" IsVisible="True" />
+
 	<Router ux:Name="router" />
 	<JavaScript File="main.js" />
 
