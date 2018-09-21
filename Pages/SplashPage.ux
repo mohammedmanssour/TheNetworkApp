@@ -8,7 +8,7 @@
 
     <Grid Rows="1*,5*,1*,1*">
         <TheNetwork.RegularText Color="#fff" Alignment="Center" FontSize="20" Value="Walkthrough" />
-        <PageControl Margin="30,0,30,0" ux:Name="Slider">
+        <PageControl Margin="50,0,50,0" ux:Name="Slider">
             <TheNetwork.Slide
                 Image="../Assets/Images/slide-image-1.jpg"
                 Title="like each others posts"
@@ -32,7 +32,7 @@
                 Color="#eee"
                 CornerRadius="20"
                 Opacity="0.5"
-                Margin="5"
+                Margin="5,0,5,0"
                 >
 
                 <ActivatingAnimation>
@@ -44,7 +44,7 @@
         </PageIndicator>
 
         <WhileString Value="{state}" Equals="success">
-            <Grid Columns="1*,1*" CellSpacing="20" Margin="20">
+            <Grid Columns="1*,1*" CellSpacing="20" Margin="20,0">
                 <TheNetwork.Button
                     Text="Register"
                     BackgroundColor="{Resource TheNetwork.SecondaryColor}"
