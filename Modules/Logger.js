@@ -53,6 +53,9 @@ Logger.prototype.logObject = function () {
 
     res += '{'
     for (var key in this.variable) {
+        if(!this.variable.hasOwnProperty(key)){
+            continue;
+        }
         res += "\n" +
             ' '.repeat(this.tabs * this.tabSize) +
             key +

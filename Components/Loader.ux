@@ -1,0 +1,21 @@
+<Circle
+    ux:Class="TheNetwork.Loader"
+    StartAngle="0"
+    EndAngle="180"
+    Width="50"
+    Height="50"
+    Padding="5"
+    LoaderColor="{Resource TheNetwork.SecondaryColor}"
+    IsLoading="true">
+
+    <float4 ux:Property="LoaderColor" />
+    <bool ux:Property="IsLoading" />
+
+    <Stroke Width="1" Color="{Property LoaderColor}" />
+
+    <Circle Color="{Property LoaderColor}" Width="100%" Height="100%" />
+
+    <WhileTrue Value="{Property IsLoading}">
+        <Spin Target="this" Frequency="2" />
+    </WhileTrue>
+</Circle>

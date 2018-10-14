@@ -87,17 +87,20 @@ User.prototype.saveToStorage = function(){
 User.prototype.readFromStorage = function(){
 	return Storage.read('userinfo.txt')
 		.then(content => {
-			if(!content.length || !content.id){
+			content = JSON.parse(content);
+			if(!content.id){
 				this.update({});
 				this.setLoggedOut();
 				return Promise.resolve('noinfo');
 			}
 
-			content = JSON.parse(content);
 			this.update(content);
 			this.setLoggedIn();
 			return Promise.resolve(content);
-		});
+		})
+	.catch(e => {
+		return Promise.resolve('noinfo');
+	});
 }
 
 module.exports = User;

@@ -1,0 +1,52 @@
+<StackPanel ux:Class="TheNetwork.Post" Padding="10" Margin="10" ItemSpacing="10">
+    <object ux:Property="PostObject" />
+
+    <JavaScript>
+        const post = this.PostObject.inner();
+
+        module.exports = {
+            post
+        }
+    </JavaScript>
+
+    <DockPanel ux:Name="PostHeader">
+        <Panel Dock="Left" Margin="0,0,10,0">
+            <Circle Height="60" Width="60" Clicked="{post.gotoUserProfile}">
+                <ImageFill File="../Assets/Images/profile_picture.jpg" StretchMode="UniformToFill" />
+            </Circle>
+        </Panel>
+        <StackPanel Dock="Fill" Margin="0,10,0,0">
+            <TheNetwork.BoldText Color="#000" Value="{post.user.name}" />
+            <TheNetwork.RegularText Color="#000" Value="{post.created_at}" />
+        </StackPanel>
+    </DockPanel>
+
+    <TheNetwork.RegularText Value="{post.content}" TextWrapping="Wrap" TextAlignment="Left" />
+
+    <WhileNotEmpty Items="{post.images}">
+        <PageControl Height="200" ZOffset="2">
+            <Each Items="{post.images}">
+                <Image Height="200" Url="{url}" StretchMode="UniformToFill" />
+            </Each>
+        </PageControl>
+    </WhileNotEmpty>
+
+    <TheNetwork.LoveButton
+        State="{post.liked_by_user}"
+        Alignment="Right"
+        Margin="0,-25,25,0"
+        ZOffset="5"
+        Clicked="{post.toggleLike}" />
+
+    <Grid ColumnCount="2">
+        <Panel>
+            <TheNetwork.RegularText FontSize="13" Value="{post.likes} Likes" Alignment="Center" />
+        </Panel>
+        <Panel>
+            <TheNetwork.RegularText FontSize="13" Value="{post.comments} Comments" Alignment="Center" />
+        </Panel>
+    </Grid>
+
+    <Rectangle Layer="Background" Color="#fff" />
+
+</StackPanel>

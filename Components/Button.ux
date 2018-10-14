@@ -1,12 +1,13 @@
-<Panel ux:Class="TheNetwork.Button" HitTestMode="LocalBoundsAndChildren" Height="50">
+<Panel ux:Class="TheNetwork.Button" HitTestMode="LocalBoundsAndChildren" Height="50" CornerRadius="20">
 
     <string ux:Property="Text" />
     <float4 ux:Property="BackgroundColor" />
     <float4 ux:Property="StrokeColor" />
+    <float ux:Property="CornerRadius" />
 
     <TheNetwork.BoldText Alignment="Center" Color="#fff" Value="{Property Text}" />
 
-    <Rectangle Layer="Background" CornerRadius="20" Color="{Property BackgroundColor}">
+    <Rectangle Layer="Background" CornerRadius="{Property CornerRadius}" Color="{Property BackgroundColor}">
         <Stroke Width="1" Color="{Property StrokeColor}" />
     </Rectangle>
 

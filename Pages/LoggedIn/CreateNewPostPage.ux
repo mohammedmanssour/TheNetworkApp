@@ -1,0 +1,81 @@
+<Page ux:Class="CreateNewPostPage">
+    <Router ux:Dependency="router" />
+
+    <JavaScript File="CreateNewPostPage.js" />
+
+    <TheNetwork.Container Title="Create New Post">
+
+        <DockPanel>
+            <ScrollView Dock="Fill">
+                <StackPanel>
+
+                    <WhileNotEmpty Items="{errors}">
+                        <TheNetwork.ErrorsAlert Margin="10" TextColor="#2a2a2a" StrokeColor="#2a2a2a50" Errors="{errors}" />
+                    </WhileNotEmpty>
+
+                    <TextView MinHeight="50" Value="{data.content}" Padding="10" TextColor="#000" CaretColor="#000">
+
+                        <WhileString Value="{data.content}" Test="IsEmpty">
+                            <TheNetwork.RegularText Color="#2a2a2a" Value="New Post Content Here....." />
+                        </WhileString>
+                    </TextView>
+
+                    <StackPanel HitTestMode="LocalBoundsAndChildren" Padding="10" Clicked="{choose_upload_images}">
+                        <Rectangle Height="1" Color="#2a2a2a" />
+                        <DockPanel>
+                            <Panel Dock="Left" Height="30" Width="30">
+                                <Icon Color="#2a2a2a" Alignment="Center" FontSize="20" Value="&#xe906;" />
+                            </Panel>
+                            <Panel Dock="Fill">
+                                <TheNetwork.BoldText Color="#2a2a2a" Alignment="CenterLeft" Value="Click to add images.." />
+                            </Panel>
+                        </DockPanel>
+                        <Rectangle Height="1" Color="#2a2a2a" />
+                    </StackPanel>
+
+                    <Grid Columns="1*,1*,1*" Padding="10" CellSpacing="5">
+                        <Each Items="{data.images}">
+                            <Panel Height="100">
+                                <WhileString Value="{state}" Equals="uploading">
+                                    <TheNetwork.Loader Alignment="Center" />
+                                </WhileString>
+
+                                <StackPanel>
+                                    <WhileString Value="{state}" Equals="uploaded">
+                                        <Image Url="{url}" StretchMode="UniformToFill" Height="100" />
+
+                                        <Panel Height="40" HitTestMode="LocalBoundsAndChildren" Clicked="{delete_image}">
+                                            <TheNetwork.BoldText Color="#fff" Value="Delete" Alignment="Center" />
+                                            <Rectangle Layer="Background" Color="{Resource TheNetwork.SecondaryColor}" />
+                                        </Panel>
+
+                                    </WhileString>
+
+                                    <WhileString Value="{state}" Equals="uploaded" Invert="true">
+                                        <Image File="{path}" StretchMode="UniformToFill" Height="100" />
+                                    </WhileString>
+                                </StackPanel>
+                            </Panel>
+                        </Each>
+                    </Grid>
+
+                </StackPanel>
+
+            </ScrollView>
+
+            <WhileTrue Value="{isLoading}">
+                <TheNetwork.Loader />
+            </WhileTrue>
+            <WhileFalse Value="{isLoading}">
+                <TheNetwork.Button
+                    Dock="Bottom"
+                    BackgroundColor="{Resource TheNetwork.SecondaryColor}"
+                    Text="Save Post"
+                    CornerRadius="0"
+                    Clicked="{send_save_post_request}"
+                    />
+            </WhileFalse>
+        </DockPanel>
+
+    </TheNetwork.Container>
+</Page>

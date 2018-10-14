@@ -2,12 +2,16 @@
   "RootNamespace":"",
   "Packages": [
     "Fuse",
-    "FuseJS"
+    "FuseJS",
+    "Fuse.ImageTools"
   ],
   "Includes": [
     "*",
     "Config.js:Bundle",
-    "Modules/*.js:Bundle"
+    "Modules/*.js:Bundle",
+    "Models/*.js:Bundle"
+  ],
+  "Projects": [
+    "../fuse-gallery/src/fuse-gallery.unoproj"
   ]
 }
-

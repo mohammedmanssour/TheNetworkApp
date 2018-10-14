@@ -1,7 +1,17 @@
-<Page ux:Class="MainViewLoggedIn">
+<Page ux:Class="MainViewLoggedIn" Color="{Resource TheNetwork.BrandColor}">
     <Router ux:Dependency="router" />
 
-    <Navigator>
+    <JavaScript File="MainViewLoggedIn.js" />
+
+    <WhileTrue Value="{state.menuOpened}">
+        <Scale Target="Navigator" Factor="0.7" Duration="0.5" />
+        <Move Target="Navigator" X="200" Duration="0.5" />
+    </WhileTrue>
+
+    <Navigator ux:Name="Navigator">
         <FeedPage ux:Template="feed" router="router" />
+        <CreateNewPostPage ux:Template="newPost" router="router" />
     </Navigator>
+
+    <TheNetwork.MenuPanel />
 </Page>

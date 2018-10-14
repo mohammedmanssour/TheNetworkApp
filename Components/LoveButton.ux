@@ -1,0 +1,17 @@
+<Circle ux:Class="TheNetwork.LoveButton" Color="#fff" Height="40" Width="40">
+
+    <bool ux:Property="State" />
+
+    <Icon ux:Name="HeartIcon"
+         Alignment="Center"
+         Value="&#xe90e;"
+         Color="{Resource TheNetwork.LightGrey}"
+         FontSize="20" />
+
+    <WhileTrue Value="{Property State}">
+        <Change HeartIcon.Value="&#xe910;" />
+        <Change HeartIcon.Color="{Resource TheNetwork.SecondaryColor}" />
+    </WhileTrue>
+
+    <DropShadow Angle="0" Distance="0" Size="5" Spread="0.5" Color="#00000050" />
+</Circle>

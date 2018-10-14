@@ -176,14 +176,14 @@ ${Logger.init(response).toString()}
 };
 
 Http.prototype.upload = function(url, file) {
-	return Uploader.send(url, file)
+	return Uploader.send(file, Config.baseUri + '/' + url, this.reqHeaders.Authorization)
 		.then(response => {
 			return Promise.resolve(JSON.parse(response));
 		});
 };
 
 Http.prototype.authorized = function(){
-	this.reqHeaders['Authorization'] = Auth.singleton().token.value
+	this.reqHeaders.Authorization = "Bearer " + Auth.singleton().token.value
 
 	return this;
 }

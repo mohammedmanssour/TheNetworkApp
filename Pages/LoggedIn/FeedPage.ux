@@ -1,5 +1,53 @@
 <Page ux:Class="FeedPage">
     <Router ux:Dependency="router" />
 
-    <Text Alignment="Center" Value="Hello from inner pages" />
+    <JavaScript File="FeedPage.js" />
+
+    <TheNetwork.Container Title="{title}">
+        <WhileString Value="{posts.state}" Equals="loading">
+            <TheNetwork.Loader Alignment="Center" />
+        </WhileString>
+        <WhileString Value="{posts.state}" Equals="empty">
+            <TheNetwork.RegularText Alignment="Center" TextWrapping="Wrap" TextAlignment="Center" Value="No Posts to show" />
+        </WhileString>
+        <WhileString Value="{posts.state}" Equals="error">
+            <TheNetwork.RegularText Alignment="Center" TextWrapping="Wrap" TextAlignment="Center" Value="An error occured, and we'er not able to fetch posts" />
+        </WhileString>
+
+        <WhileString Value="{posts.state}" Contains="ready">
+            <ScrollView ux:Name="PostListContainer">
+                <PullToReload IsLoading="{posts.isReloading}" ReloadHandler="{posts.fetch}">
+                    <State ux:Binding="Loading">
+                        <Set PostListContainer.ScrollPosition="0,0" />
+                    </State>
+                </PullToReload>
+                <ScrollingAnimation Range="SnapMin">
+                    <Rotate Target="ScrollViewLoader" Degrees="100" />
+                </ScrollingAnimation>
+                <StackPanel>
+                    <Panel Height="100" Margin="0,-100,0,0">
+                        <TheNetwork.Loader ux:Name="ScrollViewLoader" IsLoading="false" />
+                    </Panel>
+                    <Each Items="{posts.list}">
+                        <TheNetwork.Post PostObject="{=data()}" />
+                    </Each>
+
+                    <WhileString Value="{posts.state}" Equals="ready-loading">
+                        <TheNetwork.Loader  />
+                    </WhileString>
+                    <WhileString Value="{posts.state}" Equals="ready-no-more">
+                        <TheNetwork.RegularText Value="No More Posts" Alignment="Center" Margin="0,0,0,10"  />
+                    </WhileString>
+                    <WhileString Value="{posts.state}" Equals="ready-error">
+                        <TheNetwork.RegularText Value="An error Occurred" Alignment="Center" Margin="0,0,0,10"  />
+                    </WhileString>
+                </StackPanel>
+
+                <Scrolled To="End" Within="200">
+                    <Callback Handler="{posts.get_more}" />
+                </Scrolled>
+            </ScrollView>
+        </WhileString>
+
+    </TheNetwork.Container>
 </Page>

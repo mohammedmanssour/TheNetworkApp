@@ -1,0 +1,52 @@
+<ScrollView ux:Class="TheNetwork.MenuPanel" Width="200" Alignment="Left">
+    <StackPanel Padding="10">
+
+        <StackPanel ux:Class="FollowingInfo" ItemSpacing="10">
+            <string ux:Property="Text" />
+            <string ux:Property="Count" />
+
+            <TheNetwork.RegularText Color="#fff" TextAlignment="Center" Value="{Property Text}" />
+            <TheNetwork.RegularText Color="#fff" TextAlignment="Center" Value="{Property Count}" />
+        </StackPanel>
+
+        <StackPanel ContentAlignment="Center" ItemSpacing="10">
+            <Circle Width="100" Height="100">
+                <ImageFill File="../Assets/Images/profile_picture.jpg" StretchMode="UniformToFill" />
+            </Circle>
+
+            <TheNetwork.BoldText Color="#fff" Value="{user.name}" TextAlignment="Center" />
+
+            <Grid Columns="1*,1*">
+                <FollowingInfo Text="Followers" Count="{user.followers_count}" />
+                <FollowingInfo Text="Following" Count="{user.following_count}" />
+            </Grid>
+        </StackPanel>
+
+
+        <DockPanel ux:Class="MenuItem">
+            <string ux:Property="Text" />
+            <string ux:Property="Icon" />
+
+            <Panel Width="50" Height="50" Dock="Left">
+                <Icon Alignment="Center" Color="#fff" Value="{Property Icon}" FontSize="20" />
+            </Panel>
+
+            <Panel Dock="Fill">
+                <TheNetwork.RegularText Alignment="CenterLeft" Color="#fff" Value="{Property Text}" />
+            </Panel>
+
+            <Clicked>
+                <Callback Handler="{navigate}" />
+            </Clicked>
+        </DockPanel>
+
+        <Panel Height="50" />
+
+        <MenuItem ux:Name="createPostMenuItem" Text="Create New Post" Icon="&#xe906;"  />
+        <MenuItem ux:Name="latestPostsMenuItem" Text="Latest Posts" Icon="&#xe914;" />
+        <MenuItem ux:Name="trendyPostsMenuItem" Text="Trendy Posts" Icon="&#xe90f;" />
+        <MenuItem ux:Name="FeedMenuItem" Text="Timeline" Icon="&#xe91b;" />
+        <MenuItem ux:Name="EditProfileMenuItem" Text="Edit Profile" Icon="&#xe907;" />
+        <MenuItem ux:Name="logoutMenuItem" Text="Logout" Icon="&#xe90a;" />
+    </StackPanel>
+</ScrollView>

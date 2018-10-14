@@ -50,6 +50,8 @@ public class Uploader : NativeModule
         debug_log "all details listed";
 
         Dictionary<string, string> headers = new Dictionary<string, string>();
+        headers.Add("Authorization", (string)args[2]);
+        headers.Add("Accept", "application/json");
         // add any custom headers needed by your API
 
         Dictionary<string, object> postParameters = new Dictionary<string, object>();

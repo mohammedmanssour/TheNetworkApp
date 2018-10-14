@@ -1,0 +1,29 @@
+<Container ux:Class="TheNetwork.Container" Subtree="innerPanel">
+
+    <string ux:Property="Title" />
+
+    <DockPanel ux:Binding="Children">
+
+        <Panel ux:Name="Header" Height="50" Dock="Top">
+            <Panel
+                Width="50"
+                Height="50"
+                Alignment="CenterLeft"
+                Clicked="{toggle_menu}"
+                HitTestMode="LocalBoundsAndChildren">
+                <Icon
+                    Alignment="Center"
+                    Margin="20,0,0,0"
+                    Color="#fff"
+                    FontSize="24"
+                    Value="&#xe914;"
+                    />
+            </Panel>
+
+            <TheNetwork.RegularText Alignment="Center" Color="#fff" FontSize="18" Value="{Property Title}" />
+            <Rectangle Layer="Background" Color="{Resource TheNetwork.BrandColor}" />
+        </Panel>
+
+        <Panel Dock="Fill" Color="{Resource TheNetwork.Background}" ux:Name="innerPanel" />
+    </DockPanel>
+</Container>
